@@ -1,12 +1,19 @@
 # nvim
 
-My Neovim configuration files.
+My Neovim configuration files for my Arch Linux worstations.
+
+* uses folke/lazy.nvim as the plugin manager
+* using Mason to install some LSP/DAP/NullLs related tooling
+* nvim configuration neither driven by nor coupled to Mason
+* nvim.cmp based completions
+* always a work in progress
 
 ## Installation Location
 
 Install these files here: `~/.config/nvim`
 
-This repo will be used as a submodule for grscheller/dotfiles.
+This repo has no installation script.  It is used as a submodule of
+grscheller/dotfiles which does.
 
 ## Public Domain Declaration
 
