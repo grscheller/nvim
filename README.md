@@ -21,7 +21,7 @@ This repo will be used as a submodule for grscheller/dotfiles.
   To the extent possible under law,
   [Geoffrey R. Scheller](https://github.com/grscheller)
   has waived all copyright and related or neighboring rights
-  to [dotfiles](https://github.com/grscheller/nvim).
+  to [grscheller/nvim](https://github.com/grscheller/nvim).
   This work is published from the United States of America.
 </p>
 
