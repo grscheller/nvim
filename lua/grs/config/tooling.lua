@@ -62,7 +62,7 @@ M.LspTbl = {
       lua_ls = auto,
       metals = tool,         -- nvim-metals configures LSP client directly
       pyright = auto,
-      rust_analyzer = tool,  -- rust-tools configures using nvim-lspconfig
+      rust_analyzer = tool,  -- rust-tools sets this up via nvim-lspconfig
       taplo = auto,
       zls = auto,
    },
@@ -84,6 +84,7 @@ M.BuiltinTbls = {
       mason = {
       },
       system = {
+         shellcheck = auto,
       },
    },
    completion = {
@@ -100,6 +101,7 @@ M.BuiltinTbls = {
          cppcheck = auto,
          cpplint = auto,
          selene = auto,
+         shellcheck = auto,
          yamllint = auto,
       },
    },
