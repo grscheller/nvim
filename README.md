@@ -10,10 +10,17 @@ My Neovim configuration files for my Arch Linux worstations.
 
 ## Installation Location
 
-Install these files here: `~/.config/nvim`
+To install these files to `$XDG_CONFIG_HOME/nvim` from standalone
+alone `grscheller/nvim` repo:
 
-This repo has no installation script.  It is used as a submodule of
-grscheller/dotfiles which does.
+
+```
+   $ ./nvInstall
+```
+
+If `grscheller/nvim` is a submodule of `grscheller/dotfiles` do not run
+it directly from the submodule.  It is designed to be called from
+a subshell of `dfInstall`.
 
 ## Public Domain Declaration
 
