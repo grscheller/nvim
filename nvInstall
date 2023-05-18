@@ -18,7 +18,7 @@ cd "$NVIM_GIT_REPO" || {
 }
 
 ### Source install infrastructure if necessary
-. ./installInclude.sh
+. ./installSource.sh
 
 NVIM_FILES='
    ftplugin/c.lua
