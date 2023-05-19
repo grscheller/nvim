@@ -1,6 +1,6 @@
 # nvim
 
-My Neovim configuration files for Arch Linux.
+My Neovim configuration files.
 
 * uses folke/lazy.nvim as the plugin manager
 * using Mason to install some LSP/DAP/NullLs related tooling
@@ -12,7 +12,6 @@ My Neovim configuration files for Arch Linux.
 
 To install these files to `$XDG_CONFIG_HOME/nvim` from a standalone
 alone `grscheller/nvim` repo:
-
 
 ```
    $ ./nvInstall
