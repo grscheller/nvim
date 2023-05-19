@@ -1,6 +1,6 @@
 # nvim
 
-My Neovim configuration files for my Arch Linux worstations.
+My Neovim configuration files for Arch Linux.
 
 * uses folke/lazy.nvim as the plugin manager
 * using Mason to install some LSP/DAP/NullLs related tooling
