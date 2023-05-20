@@ -99,12 +99,10 @@ return {
          }
 
          local mapping = {
-            ['<cr>'] = cmp.mapping(function(fallback)
+            ['<space>'] = cmp.mapping(function(fallback)
                if cmp.visible() then
                   cmp.confirm(optConfirm)
-                  if cmp.visible() then
-                     cmp.close()
-                  end
+                  fallback()
                else
                   fallback()
                end
