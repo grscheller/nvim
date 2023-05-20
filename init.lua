@@ -13,8 +13,11 @@ vim.api.nvim_create_autocmd('User', {
    end,
 })
 
--- Bootstrap folke/lazy.nvim if not already installed
+-- Bootstrap folke/lazy.nvim if not already installed,
+-- if bootstrapped remove packer infrastucture too.
 local lazypath = string.format('%s/lazy/lazy.nvim', vim.fn.stdpath 'data')
+local packerpath = string.format('%s/site/pack/packer', vim.fn.stdpath 'data')
+local packercomp = string.format('%s/plugin/packer/packer_compiled.lua', vim.fn.stdpath 'config')
 if not vim.loop.fs_stat(lazypath) then
    vim.fn.system {
       'git',
@@ -23,6 +26,12 @@ if not vim.loop.fs_stat(lazypath) then
       'https://github.com/folke/lazy.nvim.git',
       '--branch=stable',
       lazypath,
+   }
+   vim.fn.system {
+      'rm',
+      '-rf',
+      packerpath,
+      packercomp,
    }
 end
 
