@@ -17,7 +17,7 @@ To install these files to `$XDG_CONFIG_HOME/nvim` from a standalone
 alone `grscheller/nvim` repo:
 
 ```
-   $ ./nvInstall
+   $ ./nvInstall [-s {install|target|repo}]
 ```
 
 If `grscheller/nvim` is a submodule of `grscheller/dotfiles`, do not run

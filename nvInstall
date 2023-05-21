@@ -6,18 +6,19 @@
 
 export scriptName=nvInstall
 
-### Setup
+repoName=nvim
+scriptName=nvInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 NVIM_GIT_REPO="${NVIM_GIT_REPO:=$HOME/devel/nvim}"
 umask 0022
 
 cd "$NVIM_GIT_REPO" || {
-   printf "\\nError: Failed to cd into '%s'\\n" "$NVIM_GIT_REPO"
+   printf '\n%s: Error - Failed to cd into "%s"\n' "$scriptName" "$NVIM_GIT_REPO"
    return 1
 }
 
-### Source install infrastructure if necessary
+## If not done already, parse cmdline args and source install infrastructure
 . ./installSource.sh
 
 NVIM_FILES='
@@ -61,52 +62,38 @@ NVIM_FILES='
    init.lua
 '
 
-NVIM_TOML='
+NVIM_TOML_FILES='
    selene.toml
    stylua.toml
    vim.toml
 '
 
-RM_TARGET_ITEMS="
-   $XDG_CONFIG_HOME/nvim/lua/grs/utils
-   $XDG_CONFIG_HOME/nvim/lua/grs/plugins/ide
-"
+RM_TARGET_ITEMS=""
 
-### Install or Check
+DIRS_TO_CREATE=""
 
-# Install Neovim files
-for nvim_file in $NVIM_FILES
-do
-   install_file "$XDG_CONFIG_HOME/nvim" "$nvim_file" . 0644 "$switch"
-done
-chmod 0755 "$XDG_CONFIG_HOME"/nvim
+## Install/Check
 
-# Install $NVIM_TOML files from repo root to $XDG_CONFIG_HOME/nvim
-#
-#   Note: These don't seam to work in the repo
-#         unless located at repo's root.
-#
-for toml_file in $NVIM_TOML
-do
-   install_file "$XDG_CONFIG_HOME/nvim" "$toml_file" . 0644 "$switch"
-done
+# Install Neovim files & NVIM related TOML files
+install_files "$XDG_CONFIG_HOME/nvim" "$NVIM_FILES $NVIM_TOML_FILES" . 0644
+chmod 0755 "$XDG_CONFIG_HOME/nvim"
 
-### Some final tweaks, checks & cleanup
+# Install
 
 # Remove/report no longer needed files and directories
-for item in $RM_TARGET_ITEMS
-do
-   remove_item "$item" target
-done
+remove_items "$RM_TARGET_ITEMS"
 
-# Some final adjustments/tweaks/tasks
+# Create/report missing directories
+ensure_dirs "$DIRS_TO_CREATE"
+
+# Adjustments/tweaks/tasks
 case "$switch" in
    install)
       :
       ;;
    repo)
       # Get git status info on repo
-      printf '\nGit Status:\n'
+      printf '\n%s git status:\n' "$repoName"
       git status -s
       ;;
    target)
