@@ -6,8 +6,8 @@
 
 export scriptName=nvInstall
 
-repoName=nvim
-scriptName=nvInstall
+export MyRepoName=nvim
+export MyScriptName=nvInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 NVIM_GIT_REPO="${NVIM_GIT_REPO:=$HOME/devel/nvim}"
@@ -21,7 +21,7 @@ cd "$NVIM_GIT_REPO" || {
 ## If not done already, parse cmdline args and source install infrastructure
 . ./installSource.sh
 
-NVIM_FILES='
+nv_Config_Files='
    ftplugin/c.lua
    ftplugin/cpp.lua
    ftplugin/fish.lua
@@ -62,29 +62,30 @@ NVIM_FILES='
    init.lua
 '
 
-NVIM_TOML_FILES='
+nv_Toml_Files='
    selene.toml
    stylua.toml
    vim.toml
 '
 
-RM_TARGET_ITEMS=""
+nv_Remove_Items=""
 
-DIRS_TO_CREATE=""
+nv_Dirs_To_Create=""
 
 ## Install/Check
 
 # Install Neovim files & NVIM related TOML files
-install_files "$XDG_CONFIG_HOME/nvim" "$NVIM_FILES $NVIM_TOML_FILES" . 0644
+install_files "$XDG_CONFIG_HOME/nvim" "
+   $nv_Config_Files
+   $nv_Toml_Files
+" . 0644
 chmod 0755 "$XDG_CONFIG_HOME/nvim"
 
-# Install
-
 # Remove/report no longer needed files and directories
-remove_items "$RM_TARGET_ITEMS"
+remove_items "$nv_Remove_Items"
 
 # Create/report missing directories
-ensure_dirs "$DIRS_TO_CREATE"
+ensure_dirs "$nv_Dirs_To_Create"
 
 # Adjustments/tweaks/tasks
 case "$switch" in
@@ -92,9 +93,7 @@ case "$switch" in
       :
       ;;
    repo)
-      # Get git status info on repo
-      printf '\n%s git status:\n' "$repoName"
-      git status -s
+      git_status
       ;;
    target)
       :
