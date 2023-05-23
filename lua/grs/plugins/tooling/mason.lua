@@ -15,7 +15,7 @@ return {
    {
       'williamboman/mason.nvim',
       cmd = { 'Mason', 'MasonUpdate' },
-      keys = {{ '<leader>mm', '<cmd>Mason<cr>', desc = 'Mason' }},
+      keys = {{ '<leader>mm', '<cmd>Mason<cr>', desc = 'Mason Tool Installer' }},
       config = function()
          require('mason').setup {
             ui = {
@@ -31,16 +31,16 @@ return {
    },
 
    -- Install & update Mason packages on neovim startup
-   -- TODO: figure out what event best to use to start this
    {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       dependencies = {
          'williamboman/mason.nvim',
          'rcarriga/nvim-notify',
       },
+      event = 'VeryLazy',
       keys = {
-         { '<leader>mi', '<cmd>MasonToolsInstall<cr>', desc = 'Mason Tools Installer' },
-         { '<leader>mu', '<cmd>MasonToolsUpdate<cr>', desc = 'Mason Tools Update' },
+         { '<leader>mi', '<cmd>MasonToolsInstall<cr>', desc = 'Install tools if missing or wrong version' },
+         { '<leader>mu', '<cmd>MasonToolsUpdate<cr>', desc = 'Install missing and update already installed tools' },
       },
       config = function()
          local grsMasonGrp = autogrp('GrsMason', { clear = true })
@@ -72,10 +72,10 @@ return {
          --[[ Configure mason-tool-installer ]]
          require('mason-tool-installer').setup {
             ensure_installed = masonPackages,
-            auto_update = false,
+            auto_update = true,
             run_on_start = true,
-            start_delay = 3000, -- 3 second delay
-            debounce_hours = 8, -- at least 8 hour between attemps
+            start_delay = 2000, -- 2 second delay
+            debounce_hours = 5, -- at least 5 hour between attemps
          }
       end,
    },
