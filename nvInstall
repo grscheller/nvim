@@ -90,7 +90,7 @@ ensure_dirs "$nv_Dirs_To_Create"
 # Adjustments/tweaks/tasks
 case "$switch" in
    install)
-      :
+      printf '{}' > "$XDG_CONFIG_HOME/nvim/.neoconf.json"
       ;;
    repo)
       git_status

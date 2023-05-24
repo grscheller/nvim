@@ -15,9 +15,7 @@ return {
 
    { 'folke/neoconf.nvim', cmd = 'Neoconf', config = true },
 
-   { 'folke/neodev.nvim', opts = { experimental = { pathStrict = true } } },
-
-   { 'j-hui/fidget.nvim', config = true },
+   { 'folke/neodev.nvim', opts = {} },
 
    {
       'neovim/nvim-lspconfig',
@@ -25,7 +23,6 @@ return {
       dependencies = {
          'folke/neoconf.nvim',
          'folke/neodev.nvim',
-         'j-hui/fidget.nvim',
       },
 
       config = function()
