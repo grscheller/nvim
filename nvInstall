@@ -95,7 +95,7 @@ case "$switch" in
    repo)
       git_status
       ;;
-   target)
+   check)
       :
       ;;
 esac
