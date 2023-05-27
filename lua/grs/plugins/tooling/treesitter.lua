@@ -5,8 +5,7 @@ local ensureInstalled = require('grs.config.tooling').treesitter_ensure_installe
 return {
 
    -- Install Language Modules for Neovim's built-in Treesitter
-   {
-      'nvim-treesitter/nvim-treesitter',
+   { 'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdateSync',
       event = { 'BufReadPost', 'BufNewFile' },
       config = function()

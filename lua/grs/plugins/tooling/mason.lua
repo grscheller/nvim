@@ -12,10 +12,9 @@ return {
 
    --  Mason package manager infrastructure used to install/upgrade
    --  3rd party tools like LSP & DAP servers and Null-ls builtins.
-   {
-      'williamboman/mason.nvim',
+   { 'williamboman/mason.nvim',
       cmd = { 'Mason', 'MasonUpdate' },
-      keys = {{ '<leader>mm', '<cmd>Mason<cr>', desc = 'Mason Tool Installer' }},
+      keys = {{ '<leader>mm', '<cmd>Mason<cr>', desc = 'Mason Tool Manager' }},
       config = function()
          require('mason').setup {
             ui = {
@@ -31,8 +30,7 @@ return {
    },
 
    -- Install & update Mason packages on neovim startup
-   {
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+   { 'WhoIsSethDaniel/mason-tool-installer.nvim',
       dependencies = {
          'williamboman/mason.nvim',
          'rcarriga/nvim-notify',
@@ -75,7 +73,7 @@ return {
             auto_update = true,
             run_on_start = true,
             start_delay = 2000, -- 2 second delay
-            debounce_hours = 5, -- at least 5 hour between attemps
+            debounce_hours = 5, -- at least 5 hour between attempts
          }
       end,
    },

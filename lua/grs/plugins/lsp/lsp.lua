@@ -17,8 +17,7 @@ return {
 
    { 'folke/neodev.nvim', opts = {} },
 
-   {
-      'neovim/nvim-lspconfig',
+   { 'neovim/nvim-lspconfig',
       event = { 'BufReadPre', 'BufNewFile' },
       dependencies = {
          'folke/neoconf.nvim',
@@ -41,8 +40,7 @@ return {
       end,
    },
 
-   {
-      'jose-elias-alvarez/null-ls.nvim',
+   { 'jose-elias-alvarez/null-ls.nvim',
       event = { 'BufReadPre', 'BufNewFile' },
       dependencies = {
          'j-hui/fidget.nvim',

@@ -8,12 +8,10 @@ local mergeTables = require('grs.lib.functional').mergeTables
 
 return {
 
-   {
-      'hrsh7th/nvim-cmp',
+   { 'hrsh7th/nvim-cmp',
       dependencies = {
          -- Snippet engine
-         {
-            'L3MON4D3/LuaSnip',
+         { 'L3MON4D3/LuaSnip',
             dependencies = {
                'rafamadriz/friendly-snippets', -- wide coverage various languages
                'kmarius/jsregexp', -- ECMAScript regular expressions snippet sources

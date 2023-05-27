@@ -17,8 +17,7 @@ local km = require 'grs.config.keymaps'
 return {
 
    -- Crates, a neovim plugin that helps managing crates.io dependencies.
-   {
-      'saecki/crates.nvim',
+   { 'saecki/crates.nvim',
       dependencies = {
          'nvim-lua/plenary.nvim',
          'hrsh7th/nvim-cmp',
@@ -35,8 +34,7 @@ return {
    },
 
 
-   {
-      'simrat39/rust-tools.nvim',
+   { 'simrat39/rust-tools.nvim',
       dependencies = {
          'nvim-lua/plenary.nvim',
          'hrsh7th/cmp-nvim-lsp',

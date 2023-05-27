@@ -20,8 +20,7 @@ local info = vim.log.levels.INFO
 
 return {
 
-   {
-      'scalameta/nvim-metals',
+   { 'scalameta/nvim-metals',
       dependencies = {
          'nvim-lua/plenary.nvim',
          'hrsh7th/cmp-nvim-lsp',
