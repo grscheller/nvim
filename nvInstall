@@ -45,6 +45,7 @@ nv_Config_Files='
    lua/grs/lib/text.lua
    lua/grs/plugins/editor/init.lua
    lua/grs/plugins/editor/colorscheme.lua
+   lua/grs/plugins/editor/noice.lua
    lua/grs/plugins/editor/telescope.lua
    lua/grs/plugins/editor/textedit.lua
    lua/grs/plugins/editor/whichkey.lua

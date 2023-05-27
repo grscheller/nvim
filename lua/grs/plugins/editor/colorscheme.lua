@@ -36,16 +36,6 @@ return {
       end,
    },
 
-   -- Replace vim.notify
-   { 'rcarriga/nvim-notify',
-      lazy = false,
-      priority = 900,
-      opts = {},
-      config = function()
-         vim.notify = require 'notify'
-      end,
-   },
-
    -- Colorize color names, hexcodes, and other color formats
    { 'norcalli/nvim-colorizer.lua',
       event = { 'BufReadPre', 'BufNewFile' },
