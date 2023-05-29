@@ -43,6 +43,9 @@ nv_Config_Files='
    lua/grs/config/options.lua
    lua/grs/lib/functional.lua
    lua/grs/lib/text.lua
+   lua/grs/plugins/coding/init.lua
+   lua/grs/plugins/coding/harpoon.lua
+   lua/grs/plugins/coding/refactoring.lua
    lua/grs/plugins/editor/init.lua
    lua/grs/plugins/editor/colorscheme.lua
    lua/grs/plugins/editor/noice.lua
@@ -59,7 +62,7 @@ nv_Config_Files='
    lua/grs/plugins/tooling/mason.lua
    lua/grs/plugins/tooling/treesitter.lua
    lua/grs/plugins/tooling/utils.lua
-   lua/grs/plugins/lazy.lua
+   lua/grs/plugins/common.lua
    init.lua
 '
 
@@ -69,7 +72,9 @@ nv_Toml_Files='
    vim.toml
 '
 
-nv_Remove_Items=""
+nv_Remove_Items="
+   $XDG_CONFIG_HOME/nvim/lua/grs/plugins/lazy.lua
+"
 
 nv_Dirs_To_Create=""
 

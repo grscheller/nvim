@@ -22,7 +22,6 @@ return {
 
    { 'scalameta/nvim-metals',
       dependencies = {
-         'nvim-lua/plenary.nvim',
          'hrsh7th/cmp-nvim-lsp',
          'mfussenegger/nvim-dap',
          'j-hui/fidget.nvim', -- metals currently does not send out progress notifications

@@ -64,8 +64,6 @@ local lazy_opts = {
             'logiPat',
             'matchit',
             'matchparen',
-            'netrw',
-            'netrwPlugin',
             'rplugin',
             'rrhelper',
             'tar',

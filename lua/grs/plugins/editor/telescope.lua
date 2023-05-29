@@ -5,20 +5,15 @@ return {
    { 'nvim-telescope/telescope.nvim',
       event = 'VeryLazy',
       dependencies = {
-         'nvim-lua/plenary.nvim',
          'nvim-telescope/telescope-ui-select.nvim',
          {
             'nvim-telescope/telescope-frecency.nvim',
             dependencies = {
-               'nvim-lua/plenary.nvim',
                'kkharji/sqlite.lua',
             },
          },
          {
             'nvim-telescope/telescope-fzf-native.nvim',
-            dependencies = {
-               'nvim-lua/plenary.nvim',
-            },
             build = 'make',
          },
       },
@@ -41,7 +36,7 @@ return {
                -- intelligently select files from the edit history
                frecency = {
                   ignore_patterns = {
-                     '*.git/*',
+                     '*/*.git',
                      '*/tmp/*',
                   },
                   workspaces = {

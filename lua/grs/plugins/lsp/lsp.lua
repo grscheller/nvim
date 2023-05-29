@@ -22,6 +22,7 @@ return {
       dependencies = {
          'folke/neoconf.nvim',
          'folke/neodev.nvim',
+         'j-hui/fidget.nvim',
       },
 
       config = function()

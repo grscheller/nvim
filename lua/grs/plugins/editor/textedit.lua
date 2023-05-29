@@ -2,8 +2,13 @@
 
 vim.g['sneak#label'] = 1 -- minimalist alternative to EasyMotion
 
-
 return {
+
+   -- makes some plugins dot-repeatable like leap
+   { "tpope/vim-repeat", event = "VeryLazy" },
+
+   -- Surround text objects with matching symbols
+   { 'tpope/vim-surround', event = 'VeryLazy' },
 
    -- Comment/uncomment blocks of code
    { 'numToStr/Comment.nvim',
@@ -30,12 +35,6 @@ return {
          { 'T', '<plug>Sneak_T', mode = { 'n', 'x', 'o' }, desc = 'move before prev char' },
       },
    },
-
-   -- Surround text objects with matching symbols
-   { 'tpope/vim-surround', event = 'BufReadPost' },
-
-   -- Repeat commands from supported plugins
-   { 'tpope/vim-repeat', event = 'BufReadPost' },
 
    -- Folke Zen Mode
    { 'folke/zen-mode.nvim',

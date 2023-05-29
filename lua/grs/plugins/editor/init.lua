@@ -1,4 +1,4 @@
---[[ Configure necessary plugins to make Neovim a better text editor ]]
+--[[ Configure plugins to make Neovim a better text editor ]]
 
 local iFlatten = require('grs.lib.functional').iFlatten
 

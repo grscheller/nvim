@@ -19,7 +19,6 @@ return {
    -- Crates, a neovim plugin that helps managing crates.io dependencies.
    { 'saecki/crates.nvim',
       dependencies = {
-         'nvim-lua/plenary.nvim',
          'hrsh7th/nvim-cmp',
          'jose-elias-alvarez/null-ls.nvim',
       },
@@ -36,7 +35,6 @@ return {
 
    { 'simrat39/rust-tools.nvim',
       dependencies = {
-         'nvim-lua/plenary.nvim',
          'hrsh7th/cmp-nvim-lsp',
          'mfussenegger/nvim-dap',
          'neovim/nvim-lspconfig',

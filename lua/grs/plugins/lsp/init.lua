@@ -1,4 +1,4 @@
---[[ Configure necessary plugins to make Neovim an IDE ]]
+--[[ Configure LSP, DAP, NullLs plugins to make Neovim into an IDE ]]
 
 local iFlatten = require('grs.lib.functional').iFlatten
 
