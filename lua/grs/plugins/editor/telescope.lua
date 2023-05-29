@@ -2,7 +2,8 @@
 
 return {
 
-   { 'nvim-telescope/telescope.nvim',
+   {
+      'nvim-telescope/telescope.nvim',
       event = 'VeryLazy',
       dependencies = {
          'nvim-telescope/telescope-ui-select.nvim',
@@ -151,7 +152,8 @@ return {
       },
    },
 
-   { 'nvim-telescope/telescope-file-browser.nvim',
+   {
+      'nvim-telescope/telescope-file-browser.nvim',
       dependencies = {
          'nvim-telescope/telescope.nvim',
       },
@@ -168,7 +170,8 @@ return {
       },
    },
 
-   { 'tsakirist/telescope-lazy.nvim',
+   {
+      'tsakirist/telescope-lazy.nvim',
       dependencies = {
          'nvim-telescope/telescope.nvim',
       },

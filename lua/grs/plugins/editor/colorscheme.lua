@@ -6,7 +6,8 @@ return {
 
    -- Kanagawa colorscheme - with minor tweaks, needs to be loaded early to
    -- provide highlight groups to other plugins.
-   { 'rebelot/kanagawa.nvim',
+   {
+      'rebelot/kanagawa.nvim',
       lazy = false,
       priority = 1000,
       config = function()
@@ -37,7 +38,8 @@ return {
    },
 
    -- Colorize color names, hexcodes, and other color formats
-   { 'norcalli/nvim-colorizer.lua',
+   {
+      'norcalli/nvim-colorizer.lua',
       event = { 'BufReadPre', 'BufNewFile' },
       opts = {
          '*',
@@ -152,7 +154,8 @@ return {
 
    -- WebDevicons needs patched font, like Noto Mono Nerd Font,
    -- see https://github.com/ryanoasis/nerd-fonts
-   { 'kyazdani42/nvim-web-devicons',
+   {
+      'kyazdani42/nvim-web-devicons',
       opts = {
          default = true
       },

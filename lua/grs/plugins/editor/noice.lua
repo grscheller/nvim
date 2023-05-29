@@ -3,7 +3,8 @@
 return {
 
    -- going with suggested setup
-   { 'folke/noice.nvim',
+   {
+      'folke/noice.nvim',
       event = 'VeryLazy',
       dependencies = {
          'MunifTanjim/nui.nvim',

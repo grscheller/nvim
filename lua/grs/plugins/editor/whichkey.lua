@@ -2,7 +2,8 @@
 
 return {
 
-   { 'folke/which-key.nvim',
+   {
+      'folke/which-key.nvim',
       lazy = false,
       priority = 800,
       config = function()

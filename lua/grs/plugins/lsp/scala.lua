@@ -20,7 +20,8 @@ local info = vim.log.levels.INFO
 
 return {
 
-   { 'scalameta/nvim-metals',
+   {
+      'scalameta/nvim-metals',
       dependencies = {
          'hrsh7th/cmp-nvim-lsp',
          'mfussenegger/nvim-dap',
@@ -104,9 +105,9 @@ return {
          -- to tigger on?  The above autocmd cannot be defined until
          -- metals_config has been fully built. I verified that it
          -- indeed fires even for the first scala/sbt file edited.
-         -- But because it seems to work does not mean it is a good
-         -- idea.  I am worried about race conditions.  Maybe manually
-         -- set it off with a keyboard shortcut?
+         -- But, just because it seems to work does not mean it is
+         -- a good idea.  I am worried about race conditions.  Maybe
+         -- manually set it off with a keyboard shortcut?
       end,
    },
 

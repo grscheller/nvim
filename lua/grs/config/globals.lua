@@ -8,4 +8,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Python managed by pyenv
-vim.g.python3_host_prog = string.format('%s/.local/share/pyenv/shims/python', os.getenv 'HOME')
+vim.g.python3_host_prog = string.format(
+   '%s/.local/share/pyenv/shims/python',
+   os.getenv 'HOME'
+)

@@ -75,7 +75,8 @@ M.DapTbl = {
       cppdbg = man,
       codelldb = man,
    },
-   system = {},
+   system = {
+   },
 }
 
 -- null-ls table: if true builtins configured for null-ls

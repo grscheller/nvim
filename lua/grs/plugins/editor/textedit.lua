@@ -5,13 +5,14 @@ vim.g['sneak#label'] = 1 -- minimalist alternative to EasyMotion
 return {
 
    -- makes some plugins dot-repeatable like leap
-   { "tpope/vim-repeat", event = "VeryLazy" },
+   { 'tpope/vim-repeat', event = 'VeryLazy' },
 
    -- Surround text objects with matching symbols
    { 'tpope/vim-surround', event = 'VeryLazy' },
 
    -- Comment/uncomment blocks of code
-   { 'numToStr/Comment.nvim',
+   {
+      'numToStr/Comment.nvim',
       event = 'BufReadPost',
       opts = {
          ignore = '^$',
@@ -23,7 +24,8 @@ return {
    },
 
    -- Quickly jump around window - like easy-motion
-   { 'justinmk/vim-sneak',
+   {
+      'justinmk/vim-sneak',
       keys = {
          { 's', '<plug>Sneak_s', mode = { 'n', 'x' }, desc = 'sneak forward' },
          { 'z', '<plug>Sneak_s', mode = { 'o' },      desc = 'sneak forward' },
@@ -37,7 +39,8 @@ return {
    },
 
    -- Folke Zen Mode
-   { 'folke/zen-mode.nvim',
+   {
+      'folke/zen-mode.nvim',
       dependencies = {
          'folke/twilight.nvim',
       },
