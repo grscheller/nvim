@@ -1,4 +1,13 @@
---[[ Refactoring.nvim, Refactoring library based on Martin Fowler's book ]]
+--[[ Harpoon - quickly jump to certain file or terminals ]]
+--
+-- Harpoon marks differ from vim global marks, they serve a similar purpose to
+-- vim global marks, but differ in a few key ways:
+--
+--   1. they auto update their position within the file
+--   2. they juggle both files and nvim terminals
+--   3. they are saved on a per "project" basis
+--   4. they can be set on a per branch basis in a git repo (I don't do)
+--
 
 return {
 
@@ -13,14 +22,46 @@ return {
             desc = 'show marks',
          },
          {
-            '<leader>hm',
+            '<leader>ha',
             function()
                require('harpoon.mark').add_file()
             end,
-            noremap = true,
-            silent = true,
-            expr = false,
             desc = 'add mark',
+         },
+         {
+            '<leader>hn',
+            function()
+               require('harpoon.ui').nav_next()
+            end,
+            desc = 'nav next mark',
+         },
+         {
+            '<leader>hp',
+            function()
+               require('harpoon.ui').nav_prev()
+            end,
+            desc = 'nav prev mark',
+         },
+         {
+            '<leader>h1',
+            function()
+               require('harpoon.term').gotoTerminal(1)
+            end,
+            desc = 'harpoon term 1',
+         },
+         {
+            '<leader>h2',
+            function()
+               require('harpoon.term').gotoTerminal(2)
+            end,
+            desc = 'harpoon term 2',
+         },
+         {
+            '<leader>h3',
+            function()
+               require('harpoon.term').gotoTerminal(3)
+            end,
+            desc = 'harpoon term 3',
          },
       },
       opts = {

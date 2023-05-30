@@ -3,6 +3,6 @@
 local iFlatten = require('grs.lib.functional').iFlatten
 
 return iFlatten {
-   require 'grs.plugins.coding.refactoring',
    require 'grs.plugins.coding.harpoon',
+   -- require 'grs.plugins.coding.refactoring',
 }

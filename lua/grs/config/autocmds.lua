@@ -36,20 +36,6 @@ autocmd('TextYankPost', {
    desc = 'Give visual feedback when yanking text',
 })
 
--- Does not work for first file on cmdline
-autocmd('BufReadPost', {
-   pattern = '*',
-   callback = function()
-      local lastLoc = vim.fn.line('\'"')
-      local lastLine = vim.fn.line('$')
-      if 1 < lastLoc and lastLoc <= lastLine then
-         vim.api.nvim_exec2('' .. lastLoc, { output = false })
-      end
-   end,
-   group = GrsTextGrp,
-   desc = 'Open file at last cursor position',
-})
-
 -- Make sure folding remains essentially disabled.
 autocmd({ 'BufWritePost', 'BufEnter'}, {
    pattern = '*',
@@ -61,3 +47,18 @@ autocmd({ 'BufWritePost', 'BufEnter'}, {
    group = GrsTextGrp,
    desc = 'Make sure folding is off',
 })
+
+-- Jump to previous loation in file.
+-- Interfering with Harpoon, also does not work for first file on cmdline.
+-- autocmd('BufReadPost', {
+--    pattern = '*',
+--    callback = function()
+--       local lastLoc = vim.fn.line('\'"')
+--       local lastLine = vim.fn.line('$')
+--       if 1 < lastLoc and lastLoc <= lastLine then
+--          vim.api.nvim_exec2('' .. lastLoc, { output = false })
+--       end
+--    end,
+--    group = GrsTextGrp,
+--    desc = 'Open file at last cursor position',
+-- })

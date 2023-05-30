@@ -2,7 +2,6 @@
 #
 #  Installs my Neovim environment into my $HOME directory.
 #
-#
 
 export scriptName=nvInstall
 
@@ -19,7 +18,7 @@ cd "$NVIM_GIT_REPO" || {
 }
 
 ## If not done already, parse cmdline args and source install infrastructure
-. ./installSource.sh
+. ./.installSource.sh
 
 nv_Config_Files='
    ftplugin/c.lua
