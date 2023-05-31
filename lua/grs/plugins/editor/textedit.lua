@@ -23,19 +23,19 @@ return {
       },
    },
 
-   -- Quickly jump around window - like easy-motion
+   -- Quickly jump around window - like sneak but on steroids
    {
-      'justinmk/vim-sneak',
+      'ggandor/leap.nvim',
       keys = {
-         { 's', '<plug>Sneak_s', mode = { 'n', 'x' }, desc = 'sneak forward' },
-         { 'z', '<plug>Sneak_s', mode = { 'o' },      desc = 'sneak forward' },
-         { 'S', '<plug>Sneak_S', mode = { 'n' },      desc = 'sneak backward' },
-         { 'Z', '<plug>Sneak_S', mode = { 'x', 'o' }, desc = 'sneak backward' },
-         { 'f', '<plug>Sneak_f', mode = { 'n', 'x', 'o' }, desc = 'move to next char' },
-         { 't', '<plug>Sneak_t', mode = { 'n', 'x', 'o' }, desc = 'move before next char' },
-         { 'F', '<plug>Sneak_F', mode = { 'n', 'x', 'o' }, desc = 'move to prev char' },
-         { 'T', '<plug>Sneak_T', mode = { 'n', 'x', 'o' }, desc = 'move before prev char' },
+         { 's', mode = { 'n', 'x', 'o' }, desc = 'leap forward to' },
+         { 's', mode = { 'n', 'x', 'o' }, desc = 'leap backward to' },
+         { 'gs', mode = { 'n', 'x', 'o' }, desc = 'leap from window' },
       },
+      config = function()
+         local leap = require 'leap'
+         leap.opts.case_sensitive = true
+         leap.add_default_mappings(true)
+      end,
    },
 
    -- Folke Zen Mode
