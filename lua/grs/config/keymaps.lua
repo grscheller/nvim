@@ -90,9 +90,9 @@ km('n', '<leader>f', '<cmd>!fish -c fishterm<cr><cr>', {
 local function toggle_line_numbering()
    if not vim.wo.number and not vim.wo.relativenumber then
       vim.wo.number = true
-      vim.wo.relativenumber = true
-   elseif vim.wo.number and vim.wo.relativenumber then
       vim.wo.relativenumber = false
+   elseif vim.wo.number and not vim.wo.relativenumber then
+      vim.wo.relativenumber = true
    else
       vim.wo.number = false
       vim.wo.relativenumber = false
@@ -106,39 +106,59 @@ km('n', '<leader>n', toggle_line_numbering, {
 })
 
 -- Delete & change text without affecting default register
-km({ 'n', 'x' }, ',d', '"_d', {
+km({ 'n', 'x' }, '<bslash>d', '"_d', {
    noremap = true,
    silent = true,
    desc = 'delete text to blackhole register',
 })
-km({ 'n', 'x' }, ',c', '"_c', {
+km({ 'n', 'x' }, '<bslash>c', '"_c', {
    noremap = true,
    silent = true,
    desc = 'change text to blackhole register',
 })
+km('n', '<bslash>D', '"_D', {
+   noremap = true,
+   silent = true,
+   desc = 'delete to eol blackhole register',
+})
+km('n', '<bslash>C', '"_C', {
+   noremap = true,
+   silent = true,
+   desc = 'change to eol blackhole register',
+})
+km('n', '<bslash>sD', '"+D', {
+   noremap = true,
+   silent = true,
+   desc = 'delete to eol blackhole register',
+})
+km('n', '<bslash>sC', '"+C', {
+   noremap = true,
+   silent = true,
+   desc = 'change to eol blackhole register',
+})
 
 -- Yank, delete, change & paste with system clipboard
-km({ 'n', 'x' }, ',sy', '"+y', {
+km({ 'n', 'x' }, '<bslash>sy', '"+y', {
    noremap = true,
    silent = true,
    desc = 'yank to system clipboard',
 })
-km({ 'n', 'x' }, ',sd', '"+d', {
+km({ 'n', 'x' }, '<bslash>sd', '"+d', {
    noremap = true,
    silent = true,
    desc = 'delete to system clipboard',
 })
-km({ 'n', 'x' }, ',sc', '"+c', {
+km({ 'n', 'x' }, '<bslash>sc', '"+c', {
    noremap = true,
    silent = true,
    desc = 'change with system clipboard',
 })
-km({ 'n', 'x' }, ',sp', '"+p', {
+km({ 'n', 'x' }, '<bslash>sp', '"+p', {
    noremap = true,
    silent = true,
    desc = 'paste after cursor from system clipboard',
 })
-km({ 'n', 'x' }, ',sP', '"+P', {
+km({ 'n', 'x' }, '<bslash>sP', '"+P', {
    noremap = true,
    silent = true,
    desc = 'paste before cursor from system clipboard',
@@ -352,43 +372,43 @@ end
 --[[ DAP (Debug Adapter Protocol) related kemaps ]]
 
 function M.dap(bufnr, dap, dap_ui_widgets)
-   km('n', '\\c', dap.continue, {
+   km('n', '<bslash><bslash>c', dap.continue, {
       noremap = true,
       silent = true,
       buffer = bufnr,
       desc = 'dap continue',
    })
-   km('n', '\\h', dap_ui_widgets.hover, {
+   km('n', '<bslash><bslash>h', dap_ui_widgets.hover, {
       noremap = true,
       silent = true,
       buffer = bufnr,
       desc = 'dap hover',
    })
-   km('n', '\\l', dap.run_last, {
+   km('n', '<bslash><bslash>l', dap.run_last, {
       noremap = true,
       silent = true,
       buffer = bufnr,
       desc = 'dap run last',
    })
-   km('n', '\\o', dap.step_over, {
+   km('n', '<bslash><bslash>o', dap.step_over, {
       noremap = true,
       silent = true,
       buffer = bufnr,
       desc = 'dap step over',
    })
-   km('n', '\\i', dap.step_into, {
+   km('n', '<bslash><bslash>i', dap.step_into, {
       noremap = true,
       silent = true,
       buffer = bufnr,
       desc = 'dap step into',
    })
-   km('n', '\\b', dap.toggle_breakpoint, {
+   km('n', '<bslash><bslash>b', dap.toggle_breakpoint, {
       noremap = true,
       silent = true,
       buffer = bufnr,
       desc = 'dap toggle breakpoint',
    })
-   km('n', '\\r', dap.repl.toggle, {
+   km('n', '<bslash><bslash>r', dap.repl.toggle, {
       noremap = true,
       silent = true,
       buffer = bufnr,
