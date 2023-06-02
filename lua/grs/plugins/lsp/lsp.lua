@@ -23,7 +23,6 @@ return {
       dependencies = {
          'folke/neoconf.nvim',
          'folke/neodev.nvim',
-         'j-hui/fidget.nvim',
       },
 
       config = function()
@@ -45,9 +44,6 @@ return {
    {
       'jose-elias-alvarez/null-ls.nvim',
       event = { 'BufReadPre', 'BufNewFile' },
-      dependencies = {
-         'j-hui/fidget.nvim',
-      },
       config = function()
          local null_ls = require 'null-ls'
 

@@ -25,7 +25,6 @@ return {
       dependencies = {
          'hrsh7th/cmp-nvim-lsp',
          'mfussenegger/nvim-dap',
-         'j-hui/fidget.nvim', -- metals currently does not send out progress notifications
       },
       -- Have not yet decided whether to use Metals for pure Java projects. For
       -- now trigger for just Scala & SBT.  Once triggered, Metals will take
