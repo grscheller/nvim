@@ -1,7 +1,7 @@
 --[[ Completions & Snippets ]]
 --
--- nvim-cmp is a completion engine written in Lua.  It requires a snippet
--- engine (using LuaSnip) and completion sources (see below).
+-- nvim-cmp is a completion engine written in Lua. It requires a snippet engine
+-- (using LuaSnip) and completion sources.
 
 local words_before = require('grs.lib.text').cursor_has_words_before_it
 local mergeTables = require('grs.lib.functional').mergeTables

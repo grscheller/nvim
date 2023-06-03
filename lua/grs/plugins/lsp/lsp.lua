@@ -1,8 +1,8 @@
 --[[ Configure LSP client with lspconfig & null-ls builtins ]]
 
--- To provide overrides to customize the default configurations pushed
--- to LSP servers and Null-ls wrapped tools, edit the first two tables
--- in grs/plugins/lsp/utils.lua.
+-- To provide overrides to customize the default configurations
+-- pushed to LSP servers, and Null-ls wrapped tools, edit the first
+-- two tables in grs/plugins/lsp/utils.lua.
 --
 -- Following LazyVim except decoupled from Mason configuration.
 

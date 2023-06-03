@@ -28,7 +28,6 @@ local options = {
    colorcolumn = '+1,+21,+41',  -- keep comments <= 80 code <= 100, data <= 120
    formatoptions = 'cqjp1',  -- for joining and breaking comment lines
    spelloptions = 'camel',   -- spellCheckCamelCaseComponents
-   cpoptions = 'aABcfFJs',   -- the default is 'aABceFs_', cw & ce now differ
 
    -- Windowing preferences
    mouse = 'a',        -- enable mouse for all modes
