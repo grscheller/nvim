@@ -5,15 +5,49 @@ vim.g['sneak#label'] = 1 -- minimalist alternative to EasyMotion
 return {
 
    -- makes some plugins dot-repeatable like leap
-   { 'tpope/vim-repeat', event = 'VeryLazy' },
+   { 'tpope/vim-repeat', lazy = false },
 
    -- Surround text objects with matching symbols
-   { 'tpope/vim-surround', event = 'VeryLazy' },
+   {
+      'kylechui/nvim-surround',
+      keys = {
+         { 'ys', mode = { 'n', 'x' }, desc = 'surround around text' },
+         { 'ds', mode = { 'n', 'x' }, desc = 'delete surrounding pair' },
+         { 'cs', mode = { 'n', 'x' }, desc = 'change surrounding pair' },
+         { '<c-g>s', mode = 'i', desc = 'empty surrounding pair' },
+      },
+      config = function()
+         require('nvim-surround').setup {
+            move_cursor = false,
+         }
+      end
+   },
 
-   -- Comment/uncomment blocks of code
+   -- Comment out code
    {
       'numToStr/Comment.nvim',
-      event = 'BufReadPost',
+      keys = {
+         { mode = { 'n', 'x' }, 'gb', desc = 'toggle block comment' },
+         { mode = { 'n', 'x' }, 'gc', desc = 'toggle line comments' },
+         {
+            mode = 'n',
+            '<C-c>',
+            '<Plug>(comment_toggle_linewise_current)',
+            desc = 'toggle line comment',
+         },
+         {
+            mode = 'x',
+            '<C-c>',
+            '<Cmd>norm gcgv<CR>',
+            desc = 'toggle line comments',
+         },
+         {
+            mode = 'x',
+            '<C-b>',
+            '<Cmd>norm gbgv<CR>',
+            desc = 'toggle block comment',
+         },
+      },
       opts = {
          ignore = '^$',
          mappings = {
@@ -28,7 +62,7 @@ return {
       'ggandor/leap.nvim',
       keys = {
          { 's', mode = { 'n', 'x', 'o' }, desc = 'leap forward to' },
-         { 's', mode = { 'n', 'x', 'o' }, desc = 'leap backward to' },
+         { 'S', mode = { 'n', 'x', 'o' }, desc = 'leap backward to' },
          { 'gs', mode = { 'n', 'x', 'o' }, desc = 'leap from window' },
       },
       config = function()
@@ -43,6 +77,9 @@ return {
       'folke/zen-mode.nvim',
       dependencies = {
          'folke/twilight.nvim',
+      },
+      keys = {
+         { 'zZ', '<cmd>ZenMode<cr>', desc = 'zen-mode toggle' },
       },
       opts = {
          window = {
@@ -64,9 +101,6 @@ return {
             vim.api.nvim_win_set_option(win, 'sidescrolloff', 8)
          end,
          on_close = function() end,
-      },
-      keys = {
-         { 'zZ', '<cmd>ZenMode<cr>', desc = 'zen-mode toggle' },
       },
    },
 
