@@ -41,6 +41,7 @@ nv_Config_Files='
    lua/grs/config/tooling.lua
    lua/grs/config/options.lua
    lua/grs/lib/functional.lua
+   lua/grs/lib/scroll.lua
    lua/grs/lib/text.lua
    lua/grs/plugins/coding/init.lua
    lua/grs/plugins/coding/harpoon.lua
