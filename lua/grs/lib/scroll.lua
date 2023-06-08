@@ -2,11 +2,11 @@
 
 local up = 'normal <c-y>'
 local dn = 'normal <c-e>'
-local sleep_more = 1.5
-local sleep_less = 2.0/3.0
+local sleep_more = 2.0
+local sleep_less = 0.5
 
 local M = {
-   sleep = 1000,
+   sleep = 500,
    direction = dn,
    timer = nil,
 }
@@ -22,7 +22,7 @@ local new_timer = function()
    del_timer()
    M.timer = vim.loop.new_timer()
    M.timer:start(
-      1000,
+      600,
       M.sleep,
       vim.schedule_wrap(function()
          vim.cmd(vim.api.nvim_replace_termcodes(M.direction, true, true, true))
@@ -49,7 +49,7 @@ function M.pause()
 end
 
 function M.reset()
-   M.sleep = 1000
+   M.sleep = 500
    M.direction = dn
    del_timer()
 end
