@@ -7,12 +7,19 @@ local sleep_less = 2.0/3.0
 
 local M = {
    sleep = 1000,
-   timer = nil,
    direction = dn,
+   timer = nil,
 }
 
-function M.start()
-   print(M.sleep)
+local del_timer = function()
+   if M.timer ~= nil then
+      M.timer:close()
+      M.timer = nil
+   end
+end
+
+local new_timer = function()
+   del_timer()
    M.timer = vim.loop.new_timer()
    M.timer:start(
       1000,
@@ -23,44 +30,40 @@ function M.start()
    )
 end
 
-function M.end_it()
-   if M.timer ~= nil then
-      M.timer:close()
-      M.timer = nil
-   end
-end
-
 local change = function(n, direction)
-   M.end_it()
    M.sleep = M.sleep * n
    M.direction = direction
-   M.start()
+   new_timer()
 end
 
 function M.up()
-   if M.direction == up then
-      change(sleep_less, up)
-   else
-      change(1, up)
-   end
+   change(1, up)
 end
 
 function M.down()
-   if M.direction == dn then
-      change(sleep_less, dn)
-   else
-      change(1, dn)
-   end
+   change(1, dn)
 end
 
-function M.slower()
-   change(sleep_more, M.direction)
+function M.pause()
+   del_timer()
 end
 
 function M.reset()
-   M.end_it()
    M.sleep = 1000
    M.direction = dn
+   del_timer()
+end
+
+function M.slower()
+   if M.timer then
+      change(sleep_more, M.direction)
+   end
+end
+
+function M.faster()
+   if M.timer then
+      change(sleep_less, M.direction)
+   end
 end
 
 return M

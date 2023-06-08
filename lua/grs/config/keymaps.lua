@@ -4,6 +4,7 @@
 
 local M = {}
 local km = vim.keymap.set
+local scroll = require 'grs.lib.scroll'
 
 --[[ Plugin related keymaps ]]
 
@@ -75,6 +76,14 @@ km('n', '<m-n>',     '<cmd>tabnew<cr>',   { noremap = true, silent = true, desc 
 km('n', '<m-t>', '<c-w>T', { noremap = true, silent = true, desc = 'breakout window new tab' })
 km('n', '<m-c>', '<c-w>c', { noremap = true, silent = true, desc = 'close current window' })
 km('n', '<m-o>', '<c-w>o', { noremap = true, silent = true, desc = 'close other tab windows' })
+
+-- Autoscroll window with focus
+km('n', '<c-up>', scroll.up, { noremap = true, silent = true, desc = 'autoscroll up' })
+km('n', '<c-down>', scroll.down, { noremap = true, silent = true, desc = 'autoscroll down' })
+km('n', '<c-right>', scroll.faster, { noremap = true, silent = true, desc = 'autoscroll faster' })
+km('n', '<c-left>', scroll.slower, { noremap = true, silent = true, desc = 'autoscroll slower' })
+km('n', '<c- >', scroll.reset, { noremap = true, silent = true, desc = 'autoscroll reset' })
+km('n', '<leader><leader>', scroll.pause, { noremap = true, silent = true, desc = 'autoscroll pause' })
 
 --[[ Launch external programs ]]
 
