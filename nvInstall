@@ -3,21 +3,19 @@
 #  Installs my Neovim environment into my $HOME directory.
 #
 
-export scriptName=nvInstall
-
 export MyRepoName=nvim
 export MyScriptName=nvInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
-NVIM_GIT_REPO="${NVIM_GIT_REPO:=$HOME/devel/nvim}"
+GIT_REPO="${NVIM_GIT_REPO:=$HOME/devel/nvim}"
 umask 0022
 
-cd "$NVIM_GIT_REPO" || {
-   printf '\n%s: Error - Failed to cd into "%s"\n' "$scriptName" "$NVIM_GIT_REPO"
+cd "$GIT_REPO" || {
+   printf '\n%s: Error - Failed to cd into "%s"\n' "$MyScriptName" "$GIT_REPO"
    return 1
 }
 
-## If not done already, parse cmdline args and source install infrastructure
+## source install infrastructure and, if not done already, parse cmdline args
 . ./.installSource.sh
 
 nv_Config_Files='
