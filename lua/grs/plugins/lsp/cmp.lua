@@ -24,6 +24,7 @@ return {
          -- completion sources
          'hrsh7th/cmp-buffer',
          'hrsh7th/cmp-cmdline',
+         'hrsh7th/cmp-nvim-lsp-document-symbol',
          'hrsh7th/cmp-nvim-lua',
          'hrsh7th/cmp-path',
          'lukas-reineke/cmp-rg',
@@ -42,6 +43,8 @@ return {
          local luasnip = require 'luasnip'
 
          require('luasnip.loaders.from_vscode').lazy_load()
+
+         --[[ Modify completion behaiviors $ appearance ]]
 
          local sorting = {
             comparators = {
@@ -71,6 +74,7 @@ return {
                   cmdline = '[cmd]',
                   crates = '[crates]',
                   nvim_lsp = '[lsp]',
+                  nvim_lsp_document_symbol = '[dsym]',
                   nvim_lua = '[lua]',
                   path = '[path]',
                   rg = '[rg]',
@@ -79,16 +83,20 @@ return {
             },
          }
 
+         local window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+         }
+
+         --[[ Set up snippet engine (required!) ]]
+
          local snippet = {
             expand = function(args)
                luasnip.lsp_expand(args.body)
             end,
          }
 
-         local window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered(),
-         }
+         --[[ Set up keymappings ]]
 
          local optSelect = {
             behavior = cmp.SelectBehavior.Select,
@@ -195,8 +203,11 @@ return {
             }
          }
 
+         --[[ Set up sources ]]
+
          local sources_insert_mode = {
             { name = 'nvim_lsp' },
+            { name = 'nvim_lsp_document_symbol' },
             { name = 'nvim_lua' },
             { name = 'crates' },
             {
@@ -222,7 +233,16 @@ return {
             },
          }
 
-         local sources_cmdline_mode = {{ name = 'cmdline' }}
+         local sources_cmdline_mode = {
+            { name = 'cmdline' }
+         }
+
+         local sources_search_mode = {
+            { name = 'nvim_lsp_document_symbol' },
+            { name = 'buffer' },
+         }
+
+         --[[ Now put everything together and set up nvim-cmp ]]
 
          cmp.setup {
             sorting = sorting,
@@ -234,8 +254,24 @@ return {
          }
 
          cmp.setup.cmdline(':', {
+            sorting = sorting,
+            formatting = formatting,
             mapping = mapping,
             sources = sources_cmdline_mode,
+         })
+
+         cmp.setup.cmdline('/', {
+            sorting = sorting,
+            formatting = formatting,
+            mapping = mapping,
+            sources = sources_search_mode,
+         })
+
+         cmp.setup.cmdline('?', {
+            sorting = sorting,
+            formatting = formatting,
+            mapping = mapping,
+            sources = sources_search_mode,
          })
 
       end,

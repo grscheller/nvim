@@ -10,28 +10,29 @@ return {
       'rebelot/kanagawa.nvim',
       lazy = false,
       priority = 1000,
-      config = function()
-         local kanagawa = require('kanagawa')
-         kanagawa.setup {
-            compile = true,
-            undercurl = true,
-            colors = {
-               theme = {
-                  dragon = {
-                     ui = {
-                        bg_dim = color_pallet.dragonBlack4,
-                        bg_gutter = color_pallet.dragonBlack1,
-                        bg = color_pallet.dragonBlack1,
-                     },
+      opts = {
+         compile = true,
+         undercurl = true,
+         colors = {
+            theme = {
+               dragon = {
+                  ui = {
+                     bg_dim = color_pallet.dragonBlack4,
+                     bg_gutter = color_pallet.dragonBlack1,
+                     bg = color_pallet.dragonBlack1,
                   },
                },
             },
-            overrides = function(colors)
-               return {
-                  ColorColumn = { bg = colors.palette.dragonBlack3 },
-               }
-            end,
-         }
+         },
+         overrides = function(colors)  -- add/modify highlights
+            return {
+               ColorColumn = { bg = colors.palette.dragonBlack3 },
+            }
+         end,
+      },
+      config = function(_, opts)
+         local kanagawa = require('kanagawa')
+         kanagawa.setup(opts)
          kanagawa.compile()
          kanagawa.load('dragon')
       end,
