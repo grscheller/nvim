@@ -1,6 +1,6 @@
 --[[ Colorschemes, also other plugins needing to be loaded early ]]
 
-local color_pallet = require('grs.config.colors')
+local grs_palette = require('grs.config.colors') -- goal is to get rid of this
 
 return {
 
@@ -14,12 +14,13 @@ return {
          compile = true,
          undercurl = true,
          colors = {
+            palette = {},
             theme = {
                dragon = {
                   ui = {
-                     bg_dim = color_pallet.dragonBlack4,
-                     bg_gutter = color_pallet.dragonBlack1,
-                     bg = color_pallet.dragonBlack1,
+                     bg_dim = grs_palette.dragonBlack4,
+                     bg_gutter = grs_palette.dragonBlack1,
+                     bg = grs_palette.dragonBlack1,
                   },
                },
             },
@@ -58,99 +59,103 @@ return {
          'kyazdani42/nvim-web-devicons',
       },
       event = "VeryLazy",
-      opts = {
-         options = {
-            icons_enabled = true,
-            theme = {
-               normal = {
-                  a = { fg = color_pallet.dragonBlack4, bg = color_pallet.autumnGreen, gui = 'bold' },
-                  b = { fg = color_pallet.autumnGreen, bg = color_pallet.dragonBlack4 },
-                  c = { fg = color_pallet.fujiWhite, bg = color_pallet.dragonBlack4 },
+      opts = function()
+         local kanagawa_colors = require('kanagawa.colors').setup()
+         local palette = kanagawa_colors.palette
+         return {
+            options = {
+               icons_enabled = true,
+               theme = {
+                  normal = {
+                     a = { fg = palette.dragonBlack4, bg = palette.autumnGreen, gui = 'bold' },
+                     b = { fg = palette.autumnGreen, bg = palette.dragonBlack4 },
+                     c = { fg = palette.fujiWhite, bg = palette.dragonBlack4 },
+                  },
+                  visual = {
+                     a = { fg = palette.dragonBlack4, bg = palette.autumnYellow, gui = 'bold' },
+                     b = { fg = palette.autumnYellow, bg = palette.waveBlue1 },
+                  },
+                  inactive = {
+                     a = { fg = palette.fujiWhite, bg = palette.waveBlue1, gui = 'bold' },
+                     b = { fg = palette.dragonBlack4, bg = palette.crystalBlue },
+                  },
+                  replace = {
+                     a = { fg = palette.dragonBlack4, bg = palette.oniViolet, gui = 'bold' },
+                     b = { fg = palette.oniViolet, bg = palette.dragonBlack4 },
+                     c = { fg = palette.fujiWhite, bg = palette.dragonBlack4 },
+                  },
+                  insert = {
+                     a = { fg = palette.dragonBlack4, bg = palette.crystalBlue, gui = 'bold' },
+                     b = { fg = palette.crystalBlue, bg = palette.dragonBlack4 },
+                     c = { fg = palette.fujiWhite, bg = palette.dragonBlack4 },
+                  },
+                  command = {
+                     a = { fg = palette.dragonBlack4, bg = palette.waveAqua1, gui = 'bold' },
+                     b = { fg = palette.waveAqua1, bg = palette.dragonBlack4 },
+                     c = { fg = palette.fujiWhite, bg = palette.dragonBlack4 },
+                  },
                },
-               visual = {
-                  a = { fg = color_pallet.dragonBlack4, bg = color_pallet.autumnYellow, gui = 'bold' },
-                  b = { fg = color_pallet.autumnYellow, bg = color_pallet.waveBlue1 },
+               component_separators = { left = '', right = '' },
+               section_separators = { left = '', right = '' },
+               disabled_filetypes = {
+                  statusline = { 'help' },
+                  winbar = {},
                },
-               inactive = {
-                  a = { fg = color_pallet.fujiWhite, bg = color_pallet.waveBlue1, gui = 'bold' },
-                  b = { fg = color_pallet.dragonBlack4, bg = color_pallet.crystalBlue },
-               },
-               replace = {
-                  a = { fg = color_pallet.dragonBlack4, bg = color_pallet.oniViolet, gui = 'bold' },
-                  b = { fg = color_pallet.oniViolet, bg = color_pallet.dragonBlack4 },
-                  c = { fg = color_pallet.fujiWhite, bg = color_pallet.dragonBlack4 },
-               },
-               insert = {
-                  a = { fg = color_pallet.dragonBlack4, bg = color_pallet.crystalBlue, gui = 'bold' },
-                  b = { fg = color_pallet.crystalBlue, bg = color_pallet.dragonBlack4 },
-                  c = { fg = color_pallet.fujiWhite, bg = color_pallet.dragonBlack4 },
-               },
-               command = {
-                  a = { fg = color_pallet.dragonBlack4, bg = color_pallet.waveAqua1, gui = 'bold' },
-                  b = { fg = color_pallet.waveAqua1, bg = color_pallet.dragonBlack4 },
-                  c = { fg = color_pallet.fujiWhite, bg = color_pallet.dragonBlack4 },
-               },
+               ignore_focus = {},
+               always_divide_middle = true,
+               globalstatus = true,
             },
-            component_separators = { left = '', right = '' },
-            section_separators = { left = '', right = '' },
-            disabled_filetypes = {
-               statusline = { 'help' },
-               winbar = {},
-            },
-            ignore_focus = {},
-            always_divide_middle = true,
-            globalstatus = true,
-         },
-         sections = {
-            lualine_a = { 'mode' },
-            lualine_b = {
-               'branch',
-               'diff',
-               {
-                  'diagnostics',
-                  sources = { 'nvim_diagnostic' },
+            sections = {
+               lualine_a = { 'mode' },
+               lualine_b = {
+                  'branch',
+                  'diff',
+                  {
+                     'diagnostics',
+                     sources = { 'nvim_diagnostic' },
+                  },
                },
-            },
-            lualine_c = {
-               {
-                  'filename',
-                  path = 1,
-                  file_status = true,
-                  newfile_status = true,
+               lualine_c = {
+                  {
+                     'filename',
+                     path = 1,
+                     file_status = true,
+                     newfile_status = true,
+                  },
                },
-            },
-            lualine_x = {
-               {
-                  require('lazy.status').updates,
-                  cond = require('lazy.status').has_updates,
-                  color = { fg = color_pallet.sakuraPink },
+               lualine_x = {
+                  {
+                     require('lazy.status').updates,
+                     cond = require('lazy.status').has_updates,
+                     color = { fg = palette.sakuraPink },
+                  },
+                  'encoding',
+                  'fileformat',
+                  'filetype',
                },
-               'encoding',
-               'fileformat',
-               'filetype',
+               lualine_y = { 'location' },
+               lualine_z = { 'progress' },
             },
-            lualine_y = { 'location' },
-            lualine_z = { 'progress' },
-         },
-         tabline = {},
-         winbar = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { 'filename' },
-            lualine_x = { 'branch' },
-            lualine_y = {},
-            lualine_z = {},
-         },
-         inactive_winbar = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { 'filename' },
-            lualine_x = { 'branch' },
-            lualine_y = {},
-            lualine_z = {},
-         },
-         extensions = {},
-      },
+            tabline = {},
+            winbar = {
+               lualine_a = {},
+               lualine_b = {},
+               lualine_c = { 'filename' },
+               lualine_x = { 'branch' },
+               lualine_y = {},
+               lualine_z = {},
+            },
+            inactive_winbar = {
+               lualine_a = {},
+               lualine_b = {},
+               lualine_c = { 'filename' },
+               lualine_x = { 'branch' },
+               lualine_y = {},
+               lualine_z = {},
+            },
+            extensions = {},
+         }
+      end
    },
 
    -- WebDevicons needs patched font, like Noto Mono Nerd Font,
