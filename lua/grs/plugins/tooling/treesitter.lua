@@ -7,7 +7,6 @@ return {
    -- Install Language Modules for Neovim's built-in Treesitter
    {
       'nvim-treesitter/nvim-treesitter',
-      build = ':TSUpdateSync',
       event = { 'BufReadPost', 'BufNewFile' },
       config = function()
          require('nvim-treesitter.configs').setup {
@@ -21,6 +20,7 @@ return {
             indent = { enable = true },
          }
       end,
+      build = ':TSUpdateSync',
    }
 
 }
