@@ -8,63 +8,28 @@ return {
       'rebelot/kanagawa.nvim',
       lazy = false,
       priority = 1000,
-      config = function()
-         local kanagawa = require 'kanagawa'
-         local orig_colors = require('kanagawa.colors').setup()
-         local palette = orig_colors.palette
-         local theme = vim.tbl_deep_extend('force', orig_colors.theme, {
-            dragon = {
+      opts = {
+         compile = true,
+         undercurl = true,
+         colors = {
+            theme = {
+               dragon = {
                   ui = {
-                     bg_dim = palette.dragonBlack4,
-                     bg_gutter = palette.dragonBlack1,
-                     bg = palette.dragonBlack1,
+                     bg_dim = '#282727',     -- dragonBlack4
+                     bg_gutter = '#12120f',  -- dragonBlack1
+                     bg = '#12120f',         -- dragonBlack1
                   },
                },
-         })
-         local opts = {
-            compile = true,
-            undercurl = true,
-            commentStyle = { italic = true },
-            functionStyle = {},
-            keywordStyle = { italic = true},
-            statementStyle = { bold = true },
-            typeStyle = {},
-            transparent = false,
-            dimInactive = false,
-            terminalColors = true,
-            colors = {
-               palette = palette,
-               theme =  theme,
             },
-            overrides = function(colors)  -- add/modify highlights
-               return {
-                  ColorColumn = { bg = colors.palette.dragonBlack3 },
-               }
-            end,
-            theme = 'dragon',  -- dragon is the only one I ever want to use
-            background = {
-               dark = 'dragon',
-               light = 'wave',
-            },
-         }
-         -- local opts = {
-         --    compile = true,
-         --    undercurl = true,
-         --    colors = {
-         --       palette = palette,
-         --       theme =  theme,
-         --    },
-         --    overrides = function(colors)  -- add/modify highlights
-         --       return {
-         --          ColorColumn = { bg = colors.palette.dragonBlack3 },
-         --       }
-         --    end,
-         --    theme = 'dragon',
-         --    background = {
-         --       dark = 'dragon',
-         --       light = 'wave',
-         --    },
-         -- }
+         },
+         overrides = function(colors)  -- add/modify highlights
+            return {
+               ColorColumn = { bg = colors.palette.dragonBlack3 },
+            }
+         end,
+      },
+      config = function(_, opts)
+         local kanagawa = require 'kanagawa'
          kanagawa.setup(opts)
          kanagawa.compile()
          kanagawa.load('dragon')
