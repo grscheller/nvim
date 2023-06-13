@@ -8,9 +8,10 @@ return {
       'rebelot/kanagawa.nvim',
       lazy = false,
       priority = 1000,
-      opts = function()
+      config = function()
+         local kanagawa = require 'kanagawa'
          local orig_colors = require('kanagawa.colors').setup()
-         local palette = vim.tbl_deep_extend('force', orig_colors.palette, {})
+         local palette = orig_colors.palette
          local theme = vim.tbl_deep_extend('force', orig_colors.theme, {
             dragon = {
                   ui = {
@@ -20,7 +21,7 @@ return {
                   },
                },
          })
-         return {
+         local opts = {
             compile = true,
             undercurl = true,
             commentStyle = { italic = true },
@@ -46,14 +47,28 @@ return {
                light = 'wave',
             },
          }
-      end,
-      build = ':lua require("kanagawa").compile()',
-      -- config = function(_, opts)
-      --    local kanagawa = require('kanagawa')
-      --    kanagawa.setup(opts)
-      --    kanagawa.compile()
-      --    kanagawa.load('dragon')
-      -- end,
+         -- local opts = {
+         --    compile = true,
+         --    undercurl = true,
+         --    colors = {
+         --       palette = palette,
+         --       theme =  theme,
+         --    },
+         --    overrides = function(colors)  -- add/modify highlights
+         --       return {
+         --          ColorColumn = { bg = colors.palette.dragonBlack3 },
+         --       }
+         --    end,
+         --    theme = 'dragon',
+         --    background = {
+         --       dark = 'dragon',
+         --       light = 'wave',
+         --    },
+         -- }
+         kanagawa.setup(opts)
+         kanagawa.compile()
+         kanagawa.load('dragon')
+      end
    },
 
    -- Colorize color names, hexcodes, and other color formats
