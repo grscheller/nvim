@@ -33,7 +33,6 @@ nv_Config_Files='
    ftplugin/scala.lua
    ftplugin/sh.lua
    lua/grs/config/autocmds.lua
-   lua/grs/config/colors.lua
    lua/grs/config/globals.lua
    lua/grs/config/keymaps.lua
    lua/grs/config/tooling.lua
@@ -72,6 +71,7 @@ nv_Toml_Files='
 
 nv_Remove_Items="
    $XDG_CONFIG_HOME/nvim/lua/grs/plugins/lazy.lua
+   $XDG_CONFIG_HOME/nvim/lua/grs/config/colors.lua
 "
 
 nv_Dirs_To_Create=""
