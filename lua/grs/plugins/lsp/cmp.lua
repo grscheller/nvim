@@ -99,7 +99,7 @@ return {
          --[[ Set up keymappings ]]
 
          local optSelect = {
-            behavior = cmp.SelectBehavior.Select,
+            behavior = cmp.SelectBehavior.Insert,
          }
          local optConfirm = {
             select = false,
