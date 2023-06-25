@@ -7,7 +7,12 @@ return {
       event = 'VeryLazy',
       dependencies = {
          'MunifTanjim/nui.nvim',
-         'rcarriga/nvim-notify',
+         {
+            'rcarriga/nvim-notify',
+            dependencies= {
+               'nvim-treesitter/nvim-treesitter',
+            },
+         },
       },
       opts = {
          lsp = {

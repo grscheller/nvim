@@ -13,7 +13,6 @@ return {
    -- Install Language Modules for Neovim's built-in Treesitter
    {
       'nvim-treesitter/nvim-treesitter',
-      event = { 'BufReadPost', 'BufNewFile' },
       config = function()
          require('nvim-treesitter.configs').setup {
             ensure_installed = ensureInstalled,
