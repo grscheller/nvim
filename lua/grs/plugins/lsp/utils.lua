@@ -13,7 +13,7 @@ local mergeTables= func.mergeTables
 
 local M = {}
 
--- nvim-lspconfig setup opts to override the fault opts
+-- nvim-lspconfig setup opts to override the default opts
 local LspconfigServerOpts = {
    lua_ls = function(capabilities)
       return {

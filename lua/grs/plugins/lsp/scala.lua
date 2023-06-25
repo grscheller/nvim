@@ -1,7 +1,7 @@
 --[[ Scala Metals Configuration ]]
 --
 -- The nvim-metals plugin directly configures the Neovim LSP client itself
--- and does not involke nvim-lspconfig at all.  It also uses Coursier to
+-- and does not invoke nvim-lspconfig at all.  It also uses Coursier to
 -- download & install the Scala Metals LSP server.
 --
 --    See: https://scalameta.org/metals/docs
