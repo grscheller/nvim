@@ -6,53 +6,6 @@
 
 local km = require 'grs.config.keymaps'
 
--- LSP servers to manually configure via lspconfig (installed by pacman)
-local lspServers = {
-   'bashls',
-   'clangd',
-   'zls',
-}
-
--- NullLS Builtins to configure (installed by pacman)
-local nullLsBuiltins = {
-   code_actions = {
-      'shellcheck',
-   },
-   completions = {
-   },
-   diagnostics = {
-      'cppcheck',
-      'cpplint',
-      'selene',
-      'spellcheck',
-      'yamllint',
-   },
-   formatting = {
-      'stylua',
-   },
-   hover = {
-   },
-}
-
--- NullLS Builtin option overrides
-local NullLsBuiltinOpts = {
-   yamllint = {
-      extra_args = {
-         '-d',
-         '{extends: default, rules: {key-ordering: "disable", line-length: {max: 100}}}',
-      },
-   },
-}
-
--- NullLS builtin default options
-local NullLSBuiltinOptsMT = {}
-NullLSBuiltinOptsMT.__index = function()
-   return {}
-end
-
--- NullLS builtin options
-setmetatable(NullLsBuiltinOpts, NullLSBuiltinOptsMT)
-
 return {
 
    -- LSP servers auto-installed via Nix & auto-configured via lspconfig
@@ -73,6 +26,7 @@ return {
                'ccls',          -- using clangd instead
                'clangd',        -- pacman (lspconfig)
                'metals',        -- nvim-metals (directly configures LSP client)
+               'sqls',          -- deprecated in lspconfig in favor of sqlls 
                'rust_analyzer', -- rust-tools (directly uses lspconfig)
                'zls',           -- pacman (lspconfig)
             },
@@ -86,7 +40,7 @@ return {
             -- callback and other options.
             default_config = {
                flags = {
-                  debounce_text_changes = 150,
+                  debounce_text_changes = 250,
                },
                on_attach = function(_, bufnr)
                   km.lsp(bufnr)
@@ -135,6 +89,13 @@ return {
             experimental = { pathStrict = true },
          }
 
+         -- LSP servers to manually configure via lspconfig (installed by pacman)
+         local lspServers = {
+            'bashls',
+            'clangd',
+            'zls',
+         }
+
          -- eagerly configure lsp client for each lsp server individually
          for _, lspServer in ipairs(lspServers) do
             lspconfig[lspServer].setup {
@@ -147,25 +108,24 @@ return {
       end,
    },
 
+   -- Configure Null-LS builtins to make cmdline tools behave like LSP servers
    {
       'jose-elias-alvarez/null-ls.nvim',
       event = { 'BufReadPre', 'BufNewFile' },
       config = function()
+         -- configure null-ls for all builtin sources up front
          local null_ls = require 'null-ls'
-
-         local nullLsSources = {}
-         for nullLsType, builtins in pairs(nullLsBuiltins) do
-            for _, builtin in ipairs(builtins) do
-               table.insert(
-                  nullLsSources,
-                  null_ls.builtins[nullLsType][builtin].with(NullLsBuiltinOpts[builtin])
-               )
-            end
-         end
-
-         -- setup null-ls for all builtin configurations at once
          null_ls.setup {
-            sources = nullLsSources,
+            sources = {
+               null_ls.builtins.code_actions.shellcheck,
+               null_ls.builtins.diagnostics.cppcheck,
+               null_ls.builtins.diagnostics.selene,
+               null_ls.builtins.diagnostics.yamllint.with {
+                  '-d',
+                  '{extends: default, rules: {key-ordering: "disable", line-length: {max: 100}}}',
+               },
+               null_ls.builtins.formatting.stylua,
+            },
          }
       end,
    },

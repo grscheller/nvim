@@ -54,7 +54,6 @@ nv_Config_Files='
    lua/grs/plugins/lsp/lsp.lua
    lua/grs/plugins/lsp/rust.lua
    lua/grs/plugins/lsp/scala.lua
-   lua/grs/plugins/lsp/utils.lua
    lua/grs/plugins/common.lua
    init.lua
 '
@@ -69,6 +68,7 @@ nv_Remove_Items="
    $XDG_CONFIG_HOME/nvim/lua/grs/config/colors.lua
    $XDG_CONFIG_HOME/nvim/lua/grs/config/tooling.lua
    $XDG_CONFIG_HOME/nvim/lua/grs/plugins/tooling
+   $XDG_CONFIG_HOME/nvim/lua/grs/plugins/lsp/utils.lua
 "
 
 nv_Dirs_To_Create=""
