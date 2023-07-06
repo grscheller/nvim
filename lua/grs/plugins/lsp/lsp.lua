@@ -48,8 +48,8 @@ return {
                capabilities = capabilities,
             },
             -- Override default_config for specific servers that will be passed
-            -- to lspconfig setup. Note that these these specific configurations
-            -- will be merged into the default_config.
+            -- to lspconfig setup. Note that these specific configurations will
+            -- be merged into the default_config.
             configs = {
                lua_ls = {
                   settings = {

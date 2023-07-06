@@ -34,7 +34,7 @@ return {
          local metals = require 'metals'
          local metals_config = metals.bare_config()
          metals_config.settings = {
-            serverVersion = 'SNAPSHOT',
+            serverVersion = 'latest.release',
             showImplicitArguments = true,
             showImplicitConversionsAndClasses = true,
             excludedPackages = {
